@@ -1,5 +1,3 @@
-# Title
-
 [not link](potatopic.jpg)
 [also not link](radish.jpeg)
 [link](https://beet.org)
