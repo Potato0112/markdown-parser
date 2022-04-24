@@ -11,13 +11,13 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
-        //System.out.println("markdownlength:" + markdown.length());
+        System.out.println("markdownlength:" + markdown.length());
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            /*
+            
             System.out.println("currentIndex: " + currentIndex);
             System.out.println("openBracket:" + openBracket);
             System.out.println("closeBracket:" + closeBracket);
@@ -25,7 +25,12 @@ public class MarkdownParse {
             System.out.println("closeParen:" + closeParen);
             //System.out.println(markdown.charAt(29));
             //System.out.println(markdown.charAt(30));
-            */
+            
+            if(linkParencheck(openParen, closeParen)){
+                System.out.println("failed linkParencheck");
+                break;
+            }
+            System.out.println("passed linkParencheck");
             if(!linktypecheck(markdown.substring(openParen, closeParen))){
                 //System.out.println("passed linktypecheck");
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
@@ -44,6 +49,12 @@ public class MarkdownParse {
             if(link.contains(i)){
                 return true;
             }
+        }
+        return false;
+    }
+    public static boolean linkParencheck(int openParen, int closeParen){
+        if(openParen == -1 || closeParen == -1){
+            return true;
         }
         return false;
     }
