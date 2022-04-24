@@ -1,2 +1,5 @@
 [link](https://something.com)
 nothing(http://ginseng.org)
+[link](http://shouldwork.com)
+wrong(https://doesnotwork.gov)
+wrong2(http://alsonowork.edu)
